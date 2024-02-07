@@ -42,3 +42,11 @@ public enum Device {
         return osVersion
     }
 }
+
+public extension Device {
+    static var fullAppVersion: String {
+        guard let version = Device.appVersion, let build = Device.buildVersion
+        else { return "unknown version" }
+        return "v. \(version) (\(build))"
+    }
+}
