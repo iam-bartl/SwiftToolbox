@@ -25,7 +25,9 @@ extension AnalyticsLoggerComposition: AnalyticsLogger {
         let allParams = commonParams.merging(eventParams, uniquingKeysWith: { _, new in new })
         
         let newEvent = ComposedEvent(name: event.name, params: allParams)
-        services.forEach { $0.logEvent(newEvent) }
+        services
+            .filter { $0.isEnabled }
+            .forEach { $0.logEvent(newEvent) }
     }
 }
 

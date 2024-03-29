@@ -6,11 +6,16 @@
 //
 
 import Foundation
+import Helpers
 
 public protocol HasAnalyticsLogger {
     var analyticsLogger: AnalyticsLogger { get }
 }
 
-public protocol AnalyticsLogger {
+public protocol AnalyticsLogger: Disablable {
     func logEvent(_ event: AnalyticsEvent)
+}
+
+public extension AnalyticsLogger {
+    var isEnabled: Bool { true }
 }
