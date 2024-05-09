@@ -14,14 +14,11 @@ public struct SupportBuilder {
     let supportEmail: String
     let supportSubject: String
     
-    public let eula: URL
-    
-    public init(appId: String, publisher: String, supportEmail: String, supportSubject: String, eula: URL) {
+    public init(appId: String, publisher: String, supportEmail: String, supportSubject: String) {
         self.appId = appId
         self.publisher = publisher
         self.supportEmail = supportEmail
         self.supportSubject = supportSubject
-        self.eula = eula
     }
 }
 
