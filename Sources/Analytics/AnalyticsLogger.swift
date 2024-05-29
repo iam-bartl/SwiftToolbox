@@ -19,3 +19,14 @@ public protocol AnalyticsLogger: Disablable {
 public extension AnalyticsLogger {
     var isEnabled: Bool { true }
 }
+
+public extension AnalyticsLogger {
+    func log(_ name: String, params: [String: Any]? = nil) {
+        logEvent(InlineEvent(name: name, params: params))
+    }
+}
+
+private struct InlineEvent: AnalyticsEvent {
+    let name: String
+    let params: [String: Any]?
+}
