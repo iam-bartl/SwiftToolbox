@@ -10,13 +10,11 @@ import Device
 
 public struct SupportBuilder {
     let appId: String
-    let publisher: String
     let supportEmail: String
     let supportSubject: String
     
-    public init(appId: String, publisher: String, supportEmail: String, supportSubject: String) {
+    public init(appId: String, supportEmail: String, supportSubject: String) {
         self.appId = appId
-        self.publisher = publisher
         self.supportEmail = supportEmail
         self.supportSubject = supportSubject
     }
@@ -28,7 +26,7 @@ public extension SupportBuilder {
     }
     
     var url: URL {
-        guard let url = URL(string: "itms-apps://itunes.apple.com/us/app/\(publisher)/\(appId)") else { preconditionFailure() }
+        guard let url = URL(string: "itms-apps://itunes.apple.com/app/id\(appId)") else { preconditionFailure() }
         return url
     }
     
