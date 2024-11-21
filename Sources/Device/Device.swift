@@ -31,6 +31,7 @@ public enum Device {
       return identifier
     }
     
+    @MainActor
     public static var osVersion: String? {
         var osVersion: String?
         #if os(iOS) || os(tvOS)

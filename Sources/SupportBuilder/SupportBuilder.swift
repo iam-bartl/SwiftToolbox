@@ -35,6 +35,7 @@ public extension SupportBuilder {
         return result
     }
     
+    @MainActor
     var supportUrl: URL {
         let appVesrion = Device.appVersion ?? ""
         let buildVesrion = Device.buildVersion ?? ""

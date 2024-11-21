@@ -6,12 +6,12 @@
 
 import Foundation
 
-public protocol HasIdentifier {
-    associatedtype RawIdentifier: Codable, Hashable = String
+public protocol HasIdentifier: Sendable {
+    associatedtype RawIdentifier: Codable, Sendable, Hashable = String
     var id: Identifier<Self> { get }
 }
 
-public enum Identifier<T: HasIdentifier>: Hashable {
+public enum Identifier<T: HasIdentifier>: Hashable, Sendable {
     public typealias RawID = T.RawIdentifier
     case new(RawID)
     case existing(RawID)
