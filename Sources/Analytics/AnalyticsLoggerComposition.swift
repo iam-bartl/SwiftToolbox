@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class AnalyticsLoggerComposition {
+public final class AnalyticsLoggerComposition {
     private let services: [AnalyticsLogger]
     private let sharedParams: (() -> [String: Any]?)?
     
