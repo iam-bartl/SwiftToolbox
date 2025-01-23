@@ -41,7 +41,7 @@ public extension SupportBuilder {
         let buildVesrion = Device.buildVersion ?? ""
         let model = Device.identifier
         let osVesrion = Device.osVersion ?? ""
-        let body = "<br><br>App Version: \(appVesrion)<br>Build version: \(buildVesrion)<br>Model: \(model)<br>OS version: \(osVesrion)"
+        let body = "\n\nApp Version: \(appVesrion)\nBuild version: \(buildVesrion)\nModel: \(model)\nOS version: \(osVesrion)"
         guard
             let subjectEncoded = supportSubject.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed),
             let bodyEncoded = body.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed),
