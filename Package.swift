@@ -12,6 +12,7 @@ let package = Package(
         .library(name: "Device", targets: ["Device"]),
         .library(name: "Helpers", targets: ["Helpers"]),
         .library(name: "Identifier", targets: ["Identifier"]),
+        .library(name: "ImageType", targets: ["ImageType"]),
         .library(name: "SupportBuilder", targets: ["SupportBuilder"]),
         .library(name: "SwiftToolboxViews", targets: ["SwiftToolboxViews"]),
     ],
@@ -22,6 +23,7 @@ let package = Package(
         .target(name: "Device", dependencies: []),
         .target(name: "Helpers", dependencies: []),
         .target(name: "Identifier", dependencies: []),
+        .target(name: "ImageType", dependencies: []),
         .target(name: "SupportBuilder", dependencies: ["Device"]),
         .target(name: "SwiftToolboxViews", dependencies: [])
     ]
