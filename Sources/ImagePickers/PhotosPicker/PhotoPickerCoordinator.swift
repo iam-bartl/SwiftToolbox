@@ -16,7 +16,7 @@ public struct PhotoPickerView: View {
         self.cancelActionTitle = cancelActionTitle
         self.imageBlock = imageBlock
     }
-
+    
     private let selectActionTitle: String
     private let cancelActionTitle: String
     private let imageBlock: (ImageType) -> Void
@@ -25,33 +25,31 @@ public struct PhotoPickerView: View {
     @StateObject private var model = PhotoPickerModel()
     
     public var body: some View {
-        NavigationStack {            
-            PhotosPicker(
-                selection: $model.imageSelection,
-                matching: .images,
-                photoLibrary: .shared()
-            ) {
-                Text("Select Photo")
+        PhotosPicker(
+            selection: $model.imageSelection,
+            matching: .images,
+            photoLibrary: .shared()
+        ) {
+            Text("Select Photo")
+        }
+        .photosPickerStyle(.inline)
+        .photosPickerDisabledCapabilities(.selectionActions)
+        .toolbar {
+            ToolbarItem(placement: .cancellationAction) {
+                Button(cancelActionTitle) {
+                    dismiss()
+                }
             }
-            .photosPickerStyle(.inline)
-            .photosPickerDisabledCapabilities(.selectionActions)
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button(cancelActionTitle) {
-                        dismiss()
+            
+            ToolbarItem(placement: .primaryAction) {
+                Button(selectActionTitle) {
+                    guard case .success(let image) = model.state else {
+                        return
                     }
+                    imageBlock(image.image)
                 }
-                
-                ToolbarItem(placement: .primaryAction) {
-                    Button(selectActionTitle) {
-                        guard case .success(let image) = model.state else {
-                            return
-                        }
-                        imageBlock(image.image)
-                    }
-                    .fontWeight(.semibold)
-                    .disabled(!model.state.hasContent)
-                }
+                .fontWeight(.semibold)
+                .disabled(!model.state.hasContent)
             }
         }
     }
