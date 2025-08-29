@@ -15,6 +15,11 @@ public extension Date {
         return date
     }
     
+    func distance(to date: Date, in component: Calendar.Component) -> Int {
+        let components = Calendar.current.dateComponents([component], from: self, to: date)
+        return components.value(for: component) ?? 0
+    }
+    
     var startOfDay: Date {
         Calendar.current.startOfDay(for: self)
     }
