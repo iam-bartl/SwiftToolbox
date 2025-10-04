@@ -1,7 +1,7 @@
 #if os(iOS)
 import UIKit
 
-public final class BackgroundTask {
+public final class BackgroundTaskWrapper {
     private var identifier: UIBackgroundTaskIdentifier?
     private let name: String?
 
